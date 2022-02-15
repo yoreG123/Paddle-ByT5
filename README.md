@@ -63,6 +63,8 @@ xsum380000（由于训练资源有限，batchsize设为1，所以训练步数较
 3. 验证：进入byt5目录，要验证xsum模型执行python tasks/xsum/eval.py --model_name_or_path 微调后模型路径；要验证tweetqa模型执行python tasks/tweetqa/eval.py --model_name_or_path 微调后模型路径；注意修改--evaluate_file 为 相应数据集的dev.json文件。
 最终结果截图如下
 4. aistudio链接：
+byt5xsum:https://aistudio.baidu.com/aistudio/projectdetail/3245322?contributionType=1&shared=1
+byt5tweetqa:https://aistudio.baidu.com/aistudio/projectdetail/3431324?contributionType=1&shared=1
 
 ## 6 主要代码路径
 1. tokenizer代码（modeling代码同t5）
