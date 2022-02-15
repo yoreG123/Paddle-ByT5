@@ -21,7 +21,7 @@ Paddle-ByT5
 |ByT5-small|AdamW|TweetQA|65.68|65.7|69.67|69.7|
 
 >复现代码训练日志：
-[复现代码训练日志](tweetqa.log)
+[复现代码训练日志](https://github.com/yoreG123/Paddle-ByT5/blob/main/logs/tweetqa.log)
 
 >
 >#### 在Xsum数据集的测试效果如下表。
@@ -31,7 +31,7 @@ Paddle-ByT5
 |ByT5-small|AdamW|Xsum|9.36|9.1
 
 >复现代码训练日志：
-[复现代码训练日志](xsum.log)
+[复现代码训练日志](https://github.com/yoreG123/Paddle-ByT5/blob/main/logs/xsum.log)
 
 同时logs目录之下提供visualDL日志
 
