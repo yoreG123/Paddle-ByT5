@@ -55,7 +55,7 @@ pip install rouge_score
 
 ## 5 快速开始
 由于代码在paddlenlp原始代码中增加一些代码，比如tweetqa以及xsum数据集的加载，以及byt5Tokenizer的部分代码，所以首先执行pip uninstall paddlenlp卸载原始paddlenlp，之后cd到byt5目录之下，便可以引入加入本论文代码的paddlenlp。
-1. 权重转换对齐：执行compare.py，注意修改模型路径。结果发现平均误差3.3157e-07符合精度要求。compare.py脚本参考https://github.com/JunnYu/paddle_t5/blob/main/compare.py
+1. 权重转换对齐：执行compare.py，注意修改模型路径。结果发现平均误差3.3157e-07符合精度要求。compare.py脚本参考https://github.com/JunnYu/paddle_t5/blob/main/compare.py，转换之后的模型链接为https://aistudio.baidu.com/aistudio/datasetdetail/123125
 2. 微调：进入byt5目录，微调tweetqa执行python tasks/tweetqa/run.py --model_name_or_path 初始模型路径；微调xsum执行python tasks/xsum/run.py --model_name_or_path 初始模型路径，其他参数参考args.py并自行调整。
 微调之后的预训练模型链接：
 tweetqa18450：https://aistudio.baidu.com/aistudio/datasetdetail/128224
