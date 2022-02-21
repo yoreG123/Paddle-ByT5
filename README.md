@@ -67,12 +67,16 @@ pip install sacrebleu
 >![avatar](byt5/result/tweetqa.PNG)
 3. 微调和验证：
 以下是训练tweetqa的run.py，验证模型精度的eval.py以及训练xsum的run.py，将MODEL_NAME_OR_PATH替换自己的模型路径
->python byt5/tasks/tweetqa/eval.py --model_name_or_path MODEL_NAME_OR_PATH
->python byt5/tasks/tweetqa/run.py --model_name_or_path MODEL_NAME_OR_PATH
->python byt5/tasks/xsum/run.py --model_name_or_path MODEL_NAME_OR_PATH
+```
+python byt5/tasks/tweetqa/eval.py --model_name_or_path MODEL_NAME_OR_PATH
+python byt5/tasks/tweetqa/run.py --model_name_or_path MODEL_NAME_OR_PATH
+python byt5/tasks/xsum/run.py --model_name_or_path MODEL_NAME_OR_PATH
+```
 以下是验证xsum的脚本，首先直接运行xsum的eval.py,输出all_preds.pd,之后执行evalxsum.py得到bleu结果
->python byt5/tasks/xsum/eval.py --model_name_or_path MODEL_NAME_OR_PATH
->python byt5/tasks/xsum/evalxsum.py --allpred_path /home/aistudio/all_preds.pd（替换为自己的all_preds.pd地址）
+```
+python byt5/tasks/xsum/eval.py --model_name_or_path MODEL_NAME_OR_PATH
+python byt5/tasks/xsum/evalxsum.py --allpred_path /home/aistudio/all_preds.pd（替换为自己的all_preds.pd地址）
+```
 微调之后的预训练模型链接：
 >tweetqa18450：https://aistudio.baidu.com/aistudio/datasetdetail/128224
 >xsum380000（由于训练资源有限，batchsize设为1，所以训练步数较大）：https://aistudio.baidu.com/aistudio/datasetdetail/127876
