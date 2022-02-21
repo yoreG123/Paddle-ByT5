@@ -49,22 +49,34 @@ xsum数据集可在此处下载:
 运行以下命令即可配置环境(由于nltk在源码中复制，所以可以不安装)
 ```bash
 pip install paddlepaddle-gpu
-pip install sacrebleu
+pip install colorlog
+pip install colorama
+pip install seqeval
 pip install rouge_score
+pip install visualdl
+pip install sacrebleu
 ```
 
 ## 5 快速开始
 由于代码在paddlenlp原始代码中增加一些代码，比如tweetqa以及xsum数据集的加载，以及byt5Tokenizer的部分代码，所以首先执行pip uninstall paddlenlp卸载原始paddlenlp，之后cd到byt5目录之下，便可以引入加入本论文代码的paddlenlp。
 1. 权重转换对齐：执行compare.py，注意修改模型路径。结果发现平均误差3.3157e-07符合精度要求。compare.py脚本参考https://github.com/JunnYu/paddle_t5/blob/main/compare.py
 >转换之后的模型链接为https://aistudio.baidu.com/aistudio/datasetdetail/123125
-2. 微调：进入byt5目录，微调tweetqa执行python tasks/tweetqa/run.py --model_name_or_path 初始模型路径；微调xsum执行python tasks/xsum/run.py --model_name_or_path 初始模型路径，其他参数参考args.py并自行调整。
-微调之后的预训练模型链接：
->tweetqa18450：https://aistudio.baidu.com/aistudio/datasetdetail/128224
->xsum380000（由于训练资源有限，batchsize设为1，所以训练步数较大）：https://aistudio.baidu.com/aistudio/datasetdetail/127876
-3. 验证：进入byt5目录，要验证xsum模型执行python tasks/xsum/eval.py --model_name_or_path 微调后模型路径；要验证tweetqa模型执行python tasks/tweetqa/eval.py --model_name_or_path 微调后模型路径；注意修改--evaluate_file 为 相应数据集的dev.json文件。
+2. 调整xsum数据集目录：xsum数据集较大，下载数据集到指定目录，之后注意修改/byt5/paddlenlp/datasets/xsum.py文件的数据集地址，tweetqa数据集我直接放在了项目里，所以不需自己修改文件地址，另外/byt5/tasks/xsum/eval.py中的 --evaluate_file选项改为相应数据集的dev.json文件。（或者执行的时候加参数）
 最终结果截图如下(上图为xsum，下图为tweetqa)：
 >![avatar](byt5/result/xsum.PNG)
 >![avatar](byt5/result/tweetqa.PNG)
+3. 微调和验证：
+以下是训练tweetqa的run.py，验证模型精度的eval.py以及训练xsum的run.py
+将MODEL_NAME_OR_PATH替换自己的模型路径
+python byt5/tasks/tweetqa/eval.py --model_name_or_path MODEL_NAME_OR_PATH
+python byt5/tasks/tweetqa/run.py --model_name_or_path MODEL_NAME_OR_PATH
+python byt5/tasks/xsum/run.py --model_name_or_path MODEL_NAME_OR_PATH
+以下是验证xsum的脚本，首先直接运行xsum的eval.py,输出all_preds.pd,之后执行evalxsum.py得到bleu结果
+python byt5/tasks/xsum/eval.py --model_name_or_path MODEL_NAME_OR_PATH
+python byt5/tasks/xsum/evalxsum.py --allpred_path /home/aistudio/all_preds.pd（替换为自己的all_preds.pd地址）
+微调之后的预训练模型链接：
+>tweetqa18450：https://aistudio.baidu.com/aistudio/datasetdetail/128224
+>xsum380000（由于训练资源有限，batchsize设为1，所以训练步数较大）：https://aistudio.baidu.com/aistudio/datasetdetail/127876
 4. aistudio链接：
 byt5xsum:https://aistudio.baidu.com/aistudio/projectdetail/3245322?contributionType=1&shared=1
 byt5tweetqa:https://aistudio.baidu.com/aistudio/projectdetail/3431324?contributionType=1&shared=1
