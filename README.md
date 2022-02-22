@@ -58,7 +58,7 @@ pip install sacrebleu
 ```
 
 ## 5 快速开始
-由于代码在paddlenlp原始代码中增加一些代码，比如tweetqa以及xsum数据集的加载，以及byt5Tokenizer的部分代码，所以首先执行pip uninstall paddlenlp卸载原始paddlenlp，之后cd到byt5目录之下，便可以引入加入本论文代码的paddlenlp。
+由于代码在paddlenlp原始代码中增加一些代码，比如tweetqa以及xsum数据集的加载，以及byt5Tokenizer的部分代码，所以首先执行pip uninstall paddlenlp卸载原始paddlenlp，之后cd到Paddle-ByT5目录之下，便可以引入加入本论文代码的paddlenlp。
 1. 权重转换对齐：执行compare.py，注意修改模型路径。结果发现平均误差3.3157e-07符合精度要求。compare.py脚本参考https://github.com/JunnYu/paddle_t5/blob/main/compare.py
 >转换之后的模型链接为https://aistudio.baidu.com/aistudio/datasetdetail/123125
 2. 调整xsum数据集目录：xsum数据集较大，下载数据集到指定目录，之后注意修改/byt5/paddlenlp/datasets/xsum.py文件的数据集地址，tweetqa数据集我直接放在了项目里，所以不需自己修改文件地址，另外/byt5/tasks/xsum/eval.py中的 --evaluate_file选项改为相应数据集的dev.json文件。（或者执行的时候加参数）
